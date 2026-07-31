@@ -1,0 +1,165 @@
+/* =========================================================================
+   ZeroWasteMart — Global styles & design tokens
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* ---- Design tokens ------------------------------------------------------ */
+:root {
+  /* Typography */
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Light theme palette */
+  --color-bg: #f7f4ec;
+  --color-bg-alt: #fbf9f3;
+  --color-surface: #ffffff;
+  --color-surface-2: #f1ecdf;
+  --color-text: #22281f;
+  --color-text-muted: #5b6459;
+  --color-border: #e3ddc9;
+
+  --color-primary: #2f6b4f;
+  --color-primary-hover: #244f3a;
+  --color-primary-soft: #e4efe7;
+  --color-on-primary: #ffffff;
+
+  --color-accent: #d97b2b;
+  --color-accent-hover: #b6641f;
+  --color-accent-soft: #fbead6;
+
+  --color-danger: #c4432b;
+  --color-danger-soft: #f8e1db;
+
+  --color-focus: #2f6b4f;
+
+  /* Elevation */
+  --shadow-sm: 0 1px 2px rgba(30, 26, 14, 0.06), 0 1px 1px rgba(30, 26, 14, 0.05);
+  --shadow-md: 0 10px 24px -8px rgba(30, 26, 14, 0.16), 0 2px 6px rgba(30, 26, 14, 0.06);
+  --shadow-lg: 0 24px 48px -12px rgba(20, 24, 15, 0.24), 0 6px 16px rgba(20, 24, 15, 0.08);
+
+  /* Shape & rhythm */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] {
+  --color-bg: #12160f;
+  --color-bg-alt: #171c13;
+  --color-surface: #1b2117;
+  --color-surface-2: #232b1d;
+  --color-text: #edeee6;
+  --color-text-muted: #a7b19d;
+  --color-border: #2c3524;
+
+  --color-primary: #5cb287;
+  --color-primary-hover: #74c69a;
+  --color-primary-soft: #1f3327;
+  --color-on-primary: #0d130e;
+
+  --color-accent: #eea15a;
+  --color-accent-hover: #f5b578;
+  --color-accent-soft: #3a2a17;
+
+  --color-danger: #e5715a;
+  --color-danger-soft: #3b241d;
+
+  --color-focus: #74c69a;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 10px 24px -8px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 24px 48px -12px rgba(0, 0, 0, 0.6), 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* ---- Reset & base --------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light;
+}
+
+[data-theme="dark"] html,
+html:has([data-theme="dark"]) {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Accessible, visible focus ring everywhere, mouse clicks stay quiet */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2.5px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Slim, quiet scrollbars (Webkit) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-text-muted);
+}

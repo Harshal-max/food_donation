@@ -1,0 +1,7 @@
+/* App-level styles. Design tokens & resets live in index.css.
+   This file intentionally stays minimal so page-specific CSS owns its own look. */
+
+#root {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+}

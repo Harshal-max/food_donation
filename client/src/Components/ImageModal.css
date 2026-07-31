@@ -1,0 +1,75 @@
+/* =========================================================================
+   Image lightbox modal
+   Shares the .modal-overlay / .modal-content / .close-btn class names with
+   AddItemModal.css — both files use the same token-driven look so there is
+   no visual conflict no matter which stylesheet wins the cascade.
+   ========================================================================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 12, 8, 0.78);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background-color: var(--color-surface);
+  padding: 0.75rem;
+  border-radius: var(--radius-lg);
+  position: relative;
+  max-width: 92vw;
+  max-height: 90vh;
+  overflow: auto;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+  animation: modalIn 0.2s var(--ease);
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-image {
+  width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+.close-btn {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  background-color: color-mix(in srgb, var(--color-surface) 85%, transparent);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.05rem;
+  cursor: pointer;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.close-btn:hover {
+  background-color: var(--color-danger-soft);
+  color: var(--color-danger);
+  transform: rotate(90deg);
+}
